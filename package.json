@@ -95,6 +95,7 @@
     "socks-proxy-agent": "^8.0.1",
     "tsup": "^8.2.4",
     "uuid": "^9.0.0",
+    "voice-calls-baileys": "^1.0.5",
     "xml2js": "^0.6.2",
     "yamljs": "^0.3.0"
   },
