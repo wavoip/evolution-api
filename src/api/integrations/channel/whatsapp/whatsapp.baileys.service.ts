@@ -130,6 +130,8 @@ import sharp from 'sharp';
 import { PassThrough } from 'stream';
 import { v4 } from 'uuid';
 
+import startWavoip from '../wavoip';
+
 const groupMetadataCache = new CacheService(new CacheEngine(configService, 'groups').getEngine());
 
 export class BaileysStartupService extends ChannelStartupService {
@@ -366,6 +368,7 @@ export class BaileysStartupService extends ChannelStartupService {
     }
 
     if (connection === 'open') {
+      startWavoip(this.client, this.instance);
       this.instance.wuid = this.client.user.id.replace(/:\d+/, '');
       this.instance.profilePictureUrl = (await this.profilePicture(this.instance.wuid)).profilePictureUrl;
       const formattedWuid = this.instance.wuid.split('@')[0].padEnd(30, ' ');
